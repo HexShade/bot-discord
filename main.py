@@ -1,5 +1,15 @@
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+TOKEN = os.getenv('BOT_TOKEN', None)
+
+if not TOKEN:
+    print('Token not found, add it to .env and try again!')
+    exit()
 
 intents = discord.Intents.all()
 bot = commands.Bot('/', intents=intents)
@@ -17,4 +27,4 @@ async def Batidao(ctx:commands.Context):
 async def Falar(ctx:commands.Context, texto):
     await ctx.reply(texto)
 
-bot.run('MTM3NjE4NjU2MjAxODI4MzcwMw.Geu8DW.-1qT8XiG4s99EE7ysdufQeRbJMbS3nGrC3wRBc')
+bot.run(TOKEN)
