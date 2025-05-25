@@ -19,12 +19,12 @@ async def on_ready():
     print('Manito esta on')
 
 @bot.command()
-async def Batidao(ctx:commands.Context):
+async def batidao(ctx:commands.Context):
     nome = ctx.author.global_name
     await ctx.reply(f'Pode deixar {nome}')
 
 @bot.command()
-async def Falar(ctx:commands.Context, texto):
+async def falar(ctx:commands.Context, texto):
     await ctx.reply(texto)
 
 
