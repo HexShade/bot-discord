@@ -27,7 +27,4 @@ async def batidao(ctx:commands.Context):
 async def falar(ctx:commands.Context, texto):
     await ctx.reply(texto)
 
-
-#bora bill
-
 bot.run(TOKEN)
