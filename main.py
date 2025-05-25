@@ -11,8 +11,7 @@ async def on_ready():
 @bot.command()
 async def Batidao(ctx:commands.Context):
     nome = ctx.author.global_name
-    icone = ctx.author.avatar
-    await ctx.reply(f'{icone} Pode deixar {nome}')
+    await ctx.reply(f'Pode deixar {nome}')
 
 @bot.command()
 async def Falar(ctx:commands.Context, texto):
