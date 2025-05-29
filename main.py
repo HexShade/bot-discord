@@ -1,7 +1,9 @@
 import discord
 from discord.ext import commands
+from discord.utils import get
 from openai import OpenAI
 from dotenv import load_dotenv
+import asyncio
 import os
 
 load_dotenv()
@@ -46,5 +48,29 @@ async def ai(ctx:commands.Context, *, texto):
             input=texto,
         )
         await ctx.reply(response.output_text)
+
+intents = discord.intents.default()
+intents.members=True
+
+testing = False
+
+client = commands.Bot(command_prefix= '!p',
+case_insensiteve = True, intents=intents)
+
+client.remove_command('help')
+
+for filename in os.listdir('./cogs'):
+    if filename.endswith('.py'):
+        client.load_extension(f'cogs{filename[:-3]}')
+
+@client.command(description = 'owner')
+async def unload(ctx,name):
+    client.unload_extension(f'cogs.{name}')
+    await ctx.send(f'{name} Unloaded')
+
+@client.command(description = 'owner')
+async def load(ctx,name):
+    client.load_extension(f'cogs.{name}')
+    await ctx.send(f'{name} Loaded')
 
 bot.run(TOKEN)
